@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
+import { PedidosProvider } from './../../providers/pedidos/pedidos';
+import { Pedido } from './../../model/Pedido';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PedidosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-pedidos',
   templateUrl: 'pedidos.html',
 })
-export class PedidosPage {
+export class PedidosPage implements OnInit{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pedidos: Pedido[];
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private pedidosProvider: PedidosProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PedidosPage');
   }
 
+  ngOnInit() {
+    this.pedidos = this.pedidosProvider.obtenerPedidos();
+  }
 }

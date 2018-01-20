@@ -3,29 +3,21 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>pedidos</ion-title>
+    <ion-title>Mis encargos</ion-title>
   </ion-navbar>
-
 </ion-header>
 <ion-content padding>
-  <ion-card>
-    <img src="assets/img/card-saopaolo.png" />
-    <div class="card-title">São Paulo</div>
-    <div class="card-subtitle">41 Listings</div>
-  </ion-card>
-  <ion-card>
-    <img src="assets/img/card-amsterdam.png" />
-    <div class="card-title">Amsterdam</div>
-    <div class="card-subtitle">64 Listings</div>
-  </ion-card>
-  <ion-card>
-    <img src="assets/img/card-sf.png" />
-    <div class="card-title">San Francisco</div>
-    <div class="card-subtitle">72 Listings</div>
-  </ion-card>
-  <ion-card>
-    <img src="assets/img/card-madison.png" />
-    <div class="card-title">Madison</div>
-    <div class="card-subtitle">28 Listings</div>
+  <ion-card *ngFor="let pedido of pedidos">
+    <ion-item>
+      <h2>Estado: {{pedido.estado}}</h2>
+      <div class="card-subtitle">Identificador: {{pedido.identificador}}</div>
+      <div class="card-title">Fecha pedido: {{pedido.fechaPedido | date:'dd MMM yyyy HH:mm'}}</div>
+      <ion-thumbnail item-end>
+        <img [src]="'assets/img/'+pedido.estado+'.png'">
+        <!-- Background?? -->
+      </ion-thumbnail>
+      <p>Fecha prevista de entrega: {{pedido.fechaPrevistaEntrega | date:'dd MMM yyyy'}}</p>
+      <p>Importe: {{pedido.importe | currency:'EUR':'symbol-narrow':'1.2'}}</p>
+    </ion-item>
   </ion-card>
 </ion-content>

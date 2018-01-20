@@ -1,5 +1,5 @@
 import { ProductosProvider } from './../../providers/productos/productos';
-import { Producto } from './../../model/producto';
+import { Producto } from './../../model/Producto';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 

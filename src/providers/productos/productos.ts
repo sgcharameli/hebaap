@@ -16,14 +16,16 @@ export class ProductosProvider {
       origen: 'Soria',
       precio: 4.5,
       miniatura: 'assets/img/heba-alto-tajo.jpeg',
-      pesoNeto: 600
+      pesoNeto: 600,
+      cantidadPedida: 0
     },{
       nombre: 'Miel de Esplegares',
       stock: 12,
       origen: 'Guadalajara',
       precio: 4.5,
-      miniatura: 'assets/img/advance-card-tmntr.jpg',
-      pesoNeto: 600
+      miniatura: 'assets/img/heba1.jpeg',
+      pesoNeto: 600,
+      cantidadPedida: 0
     }];
   }
 }

@@ -5,4 +5,5 @@ export interface Producto {
     precio: number;
     miniatura: string;
     pesoNeto: number;
+    cantidadPedida: number;
 }

@@ -15,6 +15,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ProductosProvider } from '../providers/productos/productos';
 import { HttpClientModule } from '@angular/common/http';
+import { PedidosProvider } from '../providers/pedidos/pedidos';
 
 
 // AF2 Settings
@@ -59,7 +60,8 @@ export const firebaseConfig = {
     SplashScreen,
     AuthProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ProductosProvider
+    ProductosProvider,
+    PedidosProvider
   ]
 })
 
