@@ -1,40 +1,64 @@
+import { LoginPage } from './../pages/login/login';
+import { NuevoPedidoPage } from './../pages/nuevo-pedido/nuevo-pedido';
+import { PedidosPage } from './../pages/pedidos/pedidos';
+import { InformacionPage } from './../pages/informacion/informacion';
+import { ConfiguracionPage } from '../pages/configuracion/configuracion';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthProvider } from '../providers/auth/auth';
+
+// Importing AF2 Module
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+
+// AF2 Settings
+export const firebaseConfig = {
+  apiKey: "AIzaSyAv8Q9S-iVhmPen52EsxdjliX0VEMjh_wA",
+  authDomain: "hebaap-1ae25.firebaseapp.com",
+  databaseURL: "https://hebaap-1ae25.firebaseio.com",
+  projectId: "hebaap-1ae25",
+  storageBucket: "hebaap-1ae25.appspot.com",
+  messagingSenderId: "367799181596"
+}
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    LoginPage,
+    NuevoPedidoPage,
+    InformacionPage,
+    PedidosPage,
     HomePage,
-    TabsPage
+    ConfiguracionPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    LoginPage,
+    NuevoPedidoPage,
+    InformacionPage,
+    PedidosPage,
     HomePage,
-    TabsPage
+    ConfiguracionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AuthProvider,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+
+export class AppModule { }

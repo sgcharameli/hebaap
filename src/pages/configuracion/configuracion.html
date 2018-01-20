@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </button>
+    <ion-title>Configuración</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>Configuración de la aplicación</ion-list-header>
+    <ion-item>
+      <button ion-button icon-left color="primary" block (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+        Cerrar sesión
+      </button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>TODO list:</ion-list-header>
+    <ion-item>
+      <ion-icon name="arrow-round-forward"></ion-icon> Quitar acceso menú desde el login
+    </ion-item>
+  </ion-list>
+</ion-content>
