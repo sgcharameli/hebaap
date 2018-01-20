@@ -1,4 +1,4 @@
-import { Producto } from './../../model/producto';
+import { Producto } from './../../model/Producto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
