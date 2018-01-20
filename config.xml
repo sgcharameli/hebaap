@@ -3,7 +3,7 @@
     <name>Hebaap</name>
     <description>Hebaap - Procesar pedidos de miel Heba.</description>
     <author email="sgcharameli@gmail.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.1.235:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

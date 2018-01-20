@@ -3,10 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Encargar</ion-title>
+    <ion-title>Nuevo encargo</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-
-  
+  <ion-list>
+    <ion-item *ngFor="let producto of productos">
+      <ion-thumbnail item-start>
+        <img [src]="producto.miniatura">
+      </ion-thumbnail>
+      <h2>{{producto.nombre}}</h2>
+      <p>Origen: {{producto.origen}}</p>
+      <p>Stock: {{producto.stock | i18nPlural: stockMensajesMapping}}</p>
+      <p>Precio(u): {{producto.precio | currency:'EUR':'symbol-narrow':'1.2'}}</p>
+      <p>Peso neto: {{producto.pesoNeto}} grs</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
