@@ -1,3 +1,4 @@
+import { Pedido } from './../../model/Pedido';
 import { ProductosProvider } from './../../providers/productos/productos';
 import { Producto } from './../../model/Producto';
 import { Component, OnInit } from '@angular/core';
@@ -11,9 +12,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class NuevoPedidoPage implements OnInit {
 
   productos: Producto[];
-  stockMensajesMapping: {[k: string]: string};
+  stockMensajesMapping: { [k: string]: string };
+  pedido: Pedido;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     private navParams: NavParams,
     private productosProvider: ProductosProvider) {
   }
@@ -24,7 +26,10 @@ export class NuevoPedidoPage implements OnInit {
 
   ngOnInit() {
     this.productos = this.productosProvider.obtenerProductos();
-    this.stockMensajesMapping = {'=0': 'No disponible',
-    '=1': 'Sólo queda # disponible', 'other': 'Quedan # disponibles'};
+    this.stockMensajesMapping = {
+      '=0': 'No disponible',
+      '=1': 'Sólo queda # disponible',
+      'other': 'Quedan # disponibles'
+    };
   }
 }

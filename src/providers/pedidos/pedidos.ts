@@ -50,6 +50,38 @@ export class PedidosProvider {
       estado: 'entregado',
       productos: [],
       importe: 19
+    },{
+      identificador: 123456789,
+      fechaPedido: new Date(),
+      fechaPrevistaEntrega: new Date(),
+      fechaEntrega: new Date(),
+      estado: 'entregado',
+      productos: [],
+      importe: 19
+    },{
+      identificador: 123456789,
+      fechaPedido: new Date(),
+      fechaPrevistaEntrega: new Date(),
+      fechaEntrega: new Date(),
+      estado: 'entregado',
+      productos: [],
+      importe: 19
+    },{
+      identificador: 123456789,
+      fechaPedido: new Date(),
+      fechaPrevistaEntrega: new Date(),
+      fechaEntrega: new Date(),
+      estado: 'entregado',
+      productos: [],
+      importe: 19
+    },{
+      identificador: 123456789,
+      fechaPedido: new Date(),
+      fechaPrevistaEntrega: new Date(),
+      fechaEntrega: new Date(),
+      estado: 'entregado',
+      productos: [],
+      importe: 19
     }];
   }
 }    
