@@ -4,12 +4,17 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Nuevo encargo</ion-title>
+    <ion-buttons end>
+      <button ion-button full round icon-end color="danger" (click)="inicializarPedido()">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let producto of productos">
+    <ion-item *ngFor="let producto of productos" (click)="mostrarDetalleProducto(producto)">
       <ion-thumbnail item-start>
         <img [src]="producto.miniatura">
       </ion-thumbnail>
@@ -23,7 +28,7 @@
 </ion-content>
 
 <ion-footer padding>
-  <ion-title>Importe: {{27 | currency:'EUR':'symbol-narrow':'1.2'}}</ion-title>
+  <ion-title>Importe: {{pedido.importeTotal | currency:'EUR':'symbol-narrow':'1.2'}}</ion-title>
   <button ion-button full round icon-end color="secondary">
     Encargar
     <ion-icon name="card"></ion-icon>

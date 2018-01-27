@@ -1,4 +1,4 @@
-import { Producto } from './Producto';
+import { ProductoPedido } from './ProductoPedido';
 
 export interface Pedido {
     identificador: number;
@@ -6,6 +6,6 @@ export interface Pedido {
     fechaPrevistaEntrega: Date;
     fechaEntrega: Date;
     estado: string;
-    productos: Producto[];
-    importe: number;
+    productosPedido: ProductoPedido[];
+    importeTotal: number;
 }

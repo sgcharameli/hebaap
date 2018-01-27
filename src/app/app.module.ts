@@ -1,3 +1,8 @@
+import { ProductoDetallePageModule } from './../pages/producto-detalle/producto-detalle.module';
+import { ProductoDetallePage } from './../pages/producto-detalle/producto-detalle';
+import { ConfiguracionPageModule } from './../pages/configuracion/configuracion.module';
+import { PedidosPageModule } from './../pages/pedidos/pedidos.module';
+import { InformacionPageModule } from './../pages/informacion/informacion.module';
 import { LoginPage } from './../pages/login/login';
 import { NuevoPedidoPage } from './../pages/nuevo-pedido/nuevo-pedido';
 import { PedidosPage } from './../pages/pedidos/pedidos';
@@ -16,6 +21,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ProductosProvider } from '../providers/productos/productos';
 import { HttpClientModule } from '@angular/common/http';
 import { PedidosProvider } from '../providers/pedidos/pedidos';
+import { LoginPageModule } from '../pages/login/login.module';
+import { NuevoPedidoPageModule } from '../pages/nuevo-pedido/nuevo-pedido.module';
 
 
 // AF2 Settings
@@ -31,15 +38,16 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    NuevoPedidoPage,
-    InformacionPage,
-    PedidosPage,
-    HomePage,
-    ConfiguracionPage
+    HomePage
   ],
   imports: [
     BrowserModule,
+    LoginPageModule,
+    NuevoPedidoPageModule,
+    InformacionPageModule,
+    PedidosPageModule,
+    ConfiguracionPageModule,
+    ProductoDetallePageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
@@ -53,7 +61,8 @@ export const firebaseConfig = {
     InformacionPage,
     PedidosPage,
     HomePage,
-    ConfiguracionPage
+    ConfiguracionPage,
+    ProductoDetallePage
   ],
   providers: [
     StatusBar,

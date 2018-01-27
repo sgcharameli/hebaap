@@ -1,7 +1,5 @@
-import { NavController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { LoginPage } from '../../pages/login/login';
 
 @Injectable()
 export class AuthProvider {

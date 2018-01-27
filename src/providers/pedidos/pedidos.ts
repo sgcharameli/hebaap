@@ -16,72 +16,72 @@ export class PedidosProvider {
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: null,
       estado: 'en-preparacion',
-      productos: [],
-      importe: 25
+      productosPedido: [],
+      importeTotal: 25
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'en-reparto',
-      productos: [],
-      importe: 14
+      productosPedido: [],
+      importeTotal: 14
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'entregado',
-      productos: [],
-      importe: 37
+      productosPedido: [],
+      importeTotal: 37
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'cancelado',
-      productos: [],
-      importe: 22
+      productosPedido: [],
+      importeTotal: 22
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'entregado',
-      productos: [],
-      importe: 19
+      productosPedido: [],
+      importeTotal: 19
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'entregado',
-      productos: [],
-      importe: 19
+      productosPedido: [],
+      importeTotal: 19
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'entregado',
-      productos: [],
-      importe: 19
+      productosPedido: [],
+      importeTotal: 19
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'entregado',
-      productos: [],
-      importe: 19
+      productosPedido: [],
+      importeTotal: 19
     },{
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'entregado',
-      productos: [],
-      importe: 19
+      productosPedido: [],
+      importeTotal: 19
     }];
   }
 }    

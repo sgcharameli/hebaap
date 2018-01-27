@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="cancelar()">Cancelar
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img [src]="producto.miniatura">
+    </ion-thumbnail>
+    <h2>{{producto.nombre}}</h2>
+    <p>Origen: {{producto.origen}}</p>
+    <p>Precio(u): {{producto.precio | currency:'EUR':'symbol-narrow':'1.2'}}</p>
+    <p>Peso neto: {{producto.pesoNeto}} grs</p>
+  </ion-item>
+  <ion-range min="1" [max]="producto.stock" step="1" snaps="true" [(ngModel)]="cantidad" color="secondary" (ionChange)="actualizarImporte()">
+    <ion-icon range-left name="remove" (click)="quitarCantidad()"></ion-icon>
+    <ion-icon range-right name="add" (click)="sumarCantidad()"></ion-icon>
+  </ion-range>
+  <ion-item>
+    <ion-checkbox color="dark" [checked]="descontarBote" [(ngModel)]="descontarBote" (ionChange)="descontarBoteVacio()"></ion-checkbox>
+    <ion-label>Se devuelve bote vacío (-{{0.5 | currency:'EUR':'symbol-narrow':'1.2'}})</ion-label>
+  </ion-item>
+  <h4>Encargar {{cantidad | i18nPlural: cantidadMensajesMapping}} de {{producto.nombre}}</h4>
+  <h2>Total: {{importeSumaProductos | currency:'EUR':'symbol-narrow':'1.2'}}</h2>
+  <button ion-button full round icon-end color="secondary" (click)="aceptar()">Aceptar
+  </button>
+</ion-content>
