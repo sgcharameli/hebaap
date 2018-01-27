@@ -1,18 +1,37 @@
-<!--
-  Generated template for the FormalizarPedidoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>formalizar-pedido</ion-title>
+    <ion-title>Formalizar encargo</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Recogida</ion-label>
+      <ion-select [(ngModel)]="direccionEntregaSeleccionada">
+        <ion-option *ngFor="let direccion of direccionesEntrega" value="direccion">{{direccion.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer padding>
+  <ion-title>Importe: {{3777 | currency:'EUR':'symbol-narrow':'1.2'}}</ion-title>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button round full icon-end color="secondary" (click)="confirmar()">
+          Encargar
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button round full icon-end color="danger" (click)="cancelar()">
+          Cancelar
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

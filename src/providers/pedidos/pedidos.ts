@@ -11,6 +11,7 @@ export class PedidosProvider {
 
   obtenerPedidos(): Pedido[] {
     return [{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -19,6 +20,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 25
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -27,6 +29,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 14
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -35,6 +38,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 37
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -43,6 +47,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 22
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -51,6 +56,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 19
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -59,6 +65,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 19
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -67,6 +74,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 19
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
@@ -75,6 +83,7 @@ export class PedidosProvider {
       productosPedido: [],
       importeTotal: 19
     },{
+      usuario: 'a@gmail.com',
       identificador: 123456789,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),

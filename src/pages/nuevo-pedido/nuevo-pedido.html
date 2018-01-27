@@ -5,7 +5,7 @@
     </button>
     <ion-title>Nuevo encargo</ion-title>
     <ion-buttons end>
-      <button ion-button full round icon-end color="danger" (click)="inicializarPedido()">
+      <button ion-button full round icon-end color="danger" (click)="inicializarPedido()" [disabled]="pedido.importeTotal == 0">
         <ion-icon name="close-circle"></ion-icon>
       </button>
     </ion-buttons>
@@ -29,8 +29,8 @@
 
 <ion-footer padding>
   <ion-title>Importe: {{pedido.importeTotal | currency:'EUR':'symbol-narrow':'1.2'}}</ion-title>
-  <button ion-button full round icon-end color="secondary">
+  <button ion-button full round icon-end color="secondary" (click)="formalizarPedido()" [disabled]="pedido.importeTotal == 0">
     Encargar
-    <ion-icon name="card"></ion-icon>
+    <ion-icon name="cart"></ion-icon>
   </button>
 </ion-footer>

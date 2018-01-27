@@ -1,3 +1,4 @@
+import { FormalizarPedidoPageModule } from './../pages/formalizar-pedido/formalizar-pedido.module';
 import { ProductoDetallePageModule } from './../pages/producto-detalle/producto-detalle.module';
 import { ProductoDetallePage } from './../pages/producto-detalle/producto-detalle';
 import { ConfiguracionPageModule } from './../pages/configuracion/configuracion.module';
@@ -23,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PedidosProvider } from '../providers/pedidos/pedidos';
 import { LoginPageModule } from '../pages/login/login.module';
 import { NuevoPedidoPageModule } from '../pages/nuevo-pedido/nuevo-pedido.module';
+import { FormalizarPedidoPage } from '../pages/formalizar-pedido/formalizar-pedido';
+import { DireccionesEntregaProvider } from '../providers/direcciones-entrega/direcciones-entrega';
 
 
 // AF2 Settings
@@ -48,6 +51,7 @@ export const firebaseConfig = {
     PedidosPageModule,
     ConfiguracionPageModule,
     ProductoDetallePageModule,
+    FormalizarPedidoPageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
@@ -62,7 +66,8 @@ export const firebaseConfig = {
     PedidosPage,
     HomePage,
     ConfiguracionPage,
-    ProductoDetallePage
+    ProductoDetallePage,
+    FormalizarPedidoPage
   ],
   providers: [
     StatusBar,
@@ -70,7 +75,8 @@ export const firebaseConfig = {
     AuthProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ProductosProvider,
-    PedidosProvider
+    PedidosProvider,
+    DireccionesEntregaProvider
   ]
 })
 

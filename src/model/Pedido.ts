@@ -1,6 +1,7 @@
 import { ProductoPedido } from './ProductoPedido';
 
 export interface Pedido {
+    usuario: string;
     identificador: number;
     fechaPedido: Date;
     fechaPrevistaEntrega: Date;
