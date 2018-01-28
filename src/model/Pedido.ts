@@ -1,3 +1,4 @@
+import { Direccion } from './Direccion';
 import { ProductoPedido } from './ProductoPedido';
 
 export interface Pedido {
@@ -9,4 +10,5 @@ export interface Pedido {
     estado: string;
     productosPedido: ProductoPedido[];
     importeTotal: number;
+    direccionEntrega: Direccion;
 }

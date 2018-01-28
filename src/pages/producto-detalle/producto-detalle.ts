@@ -13,10 +13,11 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 export class ProductoDetallePage {
 
   producto: Producto;
-  cantidad: number = 1;
+  cantidad: number;
   importeSumaProductos: number;
   cantidadMensajesMapping: { [k: string]: string };
-  descontarBote: boolean;
+  cantidadBotesMensajesMapping: { [k: string]: string };
+  botesDevueltos: number;
   descuentoAplicable: Descuento = {
     descripcion: "Entrega bote vacío",
     importe: 0.5,
@@ -29,12 +30,18 @@ export class ProductoDetallePage {
     private viewCtrl: ViewController) {
     console.log('this.navParams.data', this.navParams.data);
     this.producto = this.navParams.data;
+    this.cantidad = 1;
+    this.botesDevueltos = 0;
     this.importeSumaProductos = this.cantidad * this.producto.precio;
     this.cantidadMensajesMapping = {
       '=1': '# unidad',
       'other': '# unidades'
     };
-    this.descontarBote = false;
+    this.cantidadBotesMensajesMapping = {
+      '=0': 'No entregaré ningún bote vacío al recoger el encargo',
+      '=1': 'Entregaré un bote vacío al recoger el encargo',
+      'other': 'Entregaré # botes vacíos al recoger el encargo'
+    };
   }
 
   ionViewDidLoad() {
@@ -42,17 +49,16 @@ export class ProductoDetallePage {
   }
 
   actualizarImporte() {
-    console.log("onChange - range");
-    this.importeSumaProductos = this.cantidad * this.producto.precio;
+    console.log("onChange - actualizarImporte - range");
+    this.importeSumaProductos = this.calcularImporteTotal();
   }
 
-  descontarBoteVacio() {
-    if (this.descontarBote) {
-      this.importeSumaProductos = this.importeSumaProductos - this.descuentoAplicable.importe;
+  actualizarCantidades() {
+    console.log("onChange - actualizarCantidades - range");
+    if (this.cantidad < this.botesDevueltos) {
+      this.botesDevueltos = this.cantidad;
     }
-    else {
-      this.importeSumaProductos = this.importeSumaProductos + this.descuentoAplicable.importe;
-    }
+    this.importeSumaProductos = this.calcularImporteTotal();
   }
 
   quitarCantidad() {
@@ -67,15 +73,29 @@ export class ProductoDetallePage {
     }
   }
 
+  quitarCantidadBotes() {
+    if (this.botesDevueltos > 0) {
+      this.botesDevueltos--;
+    }
+  }
+
+  sumarCantidadBotes() {
+    if (this.botesDevueltos < this.cantidad) {
+      this.botesDevueltos++;
+      this.actualizarImporte(); //Bugfix - La primera vez no ejecuta el onChange del range
+    }
+  }
+
   aceptar() {
     let productoPedido: ProductoPedido = {
       identificadorProducto: this.producto.identificador,
       identificadorPedido: 0,
       nombreProducto: this.producto.nombre,
       importeUnidad: this.producto.precio,
+      miniatura: this.producto.miniatura,
       importeTotalProductos: this.calcularImporteTotal(),
       cantidadPedida: this.cantidad,
-      descuento: this.descuentoAplicable
+      descuento: this.calcularDescuentos()
     };
     this.viewCtrl.dismiss(productoPedido);
   }
@@ -83,12 +103,20 @@ export class ProductoDetallePage {
   cancelar() {
     this.viewCtrl.dismiss(undefined);
   }
+
   private calcularImporteTotal(): number {
-    let importeTotal = this.producto.precio * this.cantidad;
-    if (this.descontarBote) {
-      importeTotal = importeTotal - this.descuentoAplicable.importe * this.descuentoAplicable.vecesQueAplica;
+    return this.producto.precio * this.cantidad - this.descuentoAplicable.importe * this.botesDevueltos;
+  }
+
+  private calcularDescuentos(): Descuento {
+    if (this.botesDevueltos > 0) {
+      return {
+        descripcion: this.descuentoAplicable.descripcion,
+        importe: this.descuentoAplicable.importe,
+        vecesQueAplica: this.botesDevueltos
+      };
     }
-    return importeTotal;
+    return undefined;
   }
 
 }

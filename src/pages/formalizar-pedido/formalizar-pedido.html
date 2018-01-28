@@ -7,21 +7,38 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-label>Recogida</ion-label>
-      <ion-select [(ngModel)]="direccionEntregaSeleccionada">
-        <ion-option *ngFor="let direccion of direccionesEntrega" value="direccion">{{direccion.nombre}}</ion-option>
-      </ion-select>
+    <ion-item *ngFor="let productoPedido of pedido.productosPedido">
+      <ion-thumbnail item-start>
+        <img [src]="productoPedido.miniatura">
+      </ion-thumbnail>
+      <h2>{{productoPedido.nombreProducto}}</h2>
+      <p>Cantidad: {{productoPedido.cantidadPedida | i18nPlural: cantidadPedidaMensajesMapping}}</p>
+      <p text-right>{{productoPedido.importeUnidad*productoPedido.cantidadPedida | currency:'EUR':'symbol-narrow':'1.2'}}</p>
+      <p *ngIf="productoPedido.descuento != undefined" text-wrap>Descuento: {{productoPedido.descuento.descripcion}}</p>
+      <p *ngIf="productoPedido.descuento != undefined" text-wrap>(-{{productoPedido.descuento.importe | currency:'EUR':'symbol-narrow':'1.2'}} x{{productoPedido.descuento.vecesQueAplica}})
+      </p>
+      <p *ngIf="productoPedido.descuento != undefined" text-right>-{{productoPedido.descuento.importe*productoPedido.descuento.vecesQueAplica | currency:'EUR':'symbol-narrow':'1.2'}}</p>
+      <div text-right>
+        Subtotal: {{productoPedido.importeTotalProductos | currency:'EUR':'symbol-narrow':'1.2'}}
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>
 
 <ion-footer padding>
-  <ion-title>Importe: {{3777 | currency:'EUR':'symbol-narrow':'1.2'}}</ion-title>
+  <ion-list>
+    <ion-item>
+      <ion-label>Seleccionar lugar de recogida:</ion-label>
+      <ion-select [(ngModel)]="direccionEntregaSeleccionada" interface="popover">
+        <ion-option *ngFor="let direccion of direccionesEntrega" [value]="direccion">{{direccion.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-title>Total encargo: {{pedido.importeTotal | currency:'EUR':'symbol-narrow':'1.2'}}</ion-title>
   <ion-grid>
     <ion-row>
       <ion-col col-6>
-        <button ion-button round full icon-end color="secondary" (click)="confirmar()">
+        <button ion-button round full icon-end color="secondary" (click)="confirmar()" [disabled]="direccionEntregaSeleccionada == undefined">
           Encargar
           <ion-icon name="checkmark"></ion-icon>
         </button>

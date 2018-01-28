@@ -5,7 +5,7 @@
     </button>
     <ion-title>Nuevo encargo</ion-title>
     <ion-buttons end>
-      <button ion-button full round icon-end color="danger" (click)="inicializarPedido()" [disabled]="pedido.importeTotal == 0">
+      <button ion-button full round icon-end color="danger" (click)="cancelarPedido()" [disabled]="pedido.importeTotal == 0">
         <ion-icon name="close-circle"></ion-icon>
       </button>
     </ion-buttons>

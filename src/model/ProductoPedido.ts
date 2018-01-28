@@ -5,6 +5,7 @@ export interface ProductoPedido {
     identificadorPedido: number;
     nombreProducto: string;
     importeUnidad: number;
+    miniatura: string;
     importeTotalProductos: number;
     cantidadPedida: number;
     descuento: Descuento;

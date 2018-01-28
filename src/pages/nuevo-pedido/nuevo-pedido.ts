@@ -19,6 +19,7 @@ export class NuevoPedidoPage implements OnInit {
   productos: Producto[];
   stockMensajesMapping: { [k: string]: string };
   pedido: Pedido;
+  duracionToast: number = 2000;
 
   constructor(public navCtrl: NavController,
     private productosProvider: ProductosProvider,
@@ -56,14 +57,15 @@ export class NuevoPedidoPage implements OnInit {
 
   inicializarPedido() {
     this.pedido = {
-      usuario: 'a@gmail.com',
+      usuario: undefined,
       identificador: 0,
       fechaPedido: new Date(),
       fechaPrevistaEntrega: new Date(),
       fechaEntrega: new Date(),
       estado: 'nuevo',
       productosPedido: [],
-      importeTotal: 0
+      importeTotal: 0,
+      direccionEntrega: undefined
     };
   }
 
@@ -75,7 +77,7 @@ export class NuevoPedidoPage implements OnInit {
         console.log('Cancelado por el usuario');
         let toast = this.toastCtrl.create({
           message: 'Pedido guardado para más adelante',
-          duration: 2000,
+          duration: this.duracionToast,
           position: 'bottom'
         });
         toast.present(toast);
@@ -85,7 +87,7 @@ export class NuevoPedidoPage implements OnInit {
         this.inicializarPedido();
         let toast = this.toastCtrl.create({
           message: 'Pedido realizado correctamente',
-          duration: 2000,
+          duration: this.duracionToast,
           position: 'bottom'
         });
         toast.present(toast);
@@ -94,7 +96,7 @@ export class NuevoPedidoPage implements OnInit {
         console.log('Gestionar error');
         let toast = this.toastCtrl.create({
           message: 'Ha ocurrido un error, inténtelo más adelante',
-          duration: 2000,
+          duration: this.duracionToast,
           position: 'bottom'
         });
         toast.present(toast);
@@ -103,5 +105,15 @@ export class NuevoPedidoPage implements OnInit {
 
     });
     formalizarPedidoModal.present();
+  }
+
+  cancelarPedido() {
+    this.inicializarPedido();
+    let toast = this.toastCtrl.create({
+      message: 'Encargo en curso borrado',
+      duration: this.duracionToast,
+      position: 'bottom'
+    });
+    toast.present(toast);
   }
 }
